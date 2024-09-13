@@ -20,7 +20,7 @@ const ProductModal = (props) => {
     reset,
     formState: { errors },
   } = useForm();
-
+console.log(element);
   useEffect(() => {
     reset(element);
     reset();
@@ -97,7 +97,7 @@ const ProductModal = (props) => {
                       label={item.name}
                       type={item.type}
                       {...register(key, {
-                        required: `${item.name} не может быть пустым`,
+                        required: `${item.name} can't be empty`,
                       })}
                     />
                     {errors[key] && (

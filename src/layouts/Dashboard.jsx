@@ -8,6 +8,8 @@ import { routes } from "@/routes";
 import ProductDetails from "@/pages/public/ProductDetails";
 import RecipesDetails from "@/pages/public/RecipesDetails";
 import RecipMeal from "@/pages/public/RecipMeal";
+import PostDetails from "@/pages/public/posts/PostDetails";
+import PostComments from "@/pages/public/posts/PostComments";
 
 export function Dashboard() {
   return (
@@ -37,6 +39,8 @@ export function Dashboard() {
           <Route path="products/:id" element={<ProductDetails />} />
           <Route path="recipes/:id" element={<RecipesDetails />} />
           <Route path="recipes/meal-type/:id" element={<RecipMeal />} />
+          <Route path="posts/:id" element={<PostDetails />} />
+          <Route path="posts/:id/comments" element={<PostComments />} />
           <Route path="*" element={<Navigate to="home" replace />} />
         </Routes>
       </div>

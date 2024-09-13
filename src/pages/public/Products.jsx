@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "use-debounce";
 import {
   Button,
@@ -15,7 +15,8 @@ import Pagination from "@/components/pagination/Pagination";
 import ProductCard from "@/components/card/ProductCard";
 import { LIMIT } from "@/constants/api";
 import ProductModal from "@/components/modal/ProductModal";
-import { useCreateData,  useFetchData } from "@/hooks";
+import { useCreateData, useFetchData } from "@/hooks";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 const Products = () => {
   const [skip, setSkip] = useState(0);
@@ -25,7 +26,7 @@ const Products = () => {
   const [order, setOrder] = useState("");
   const [debouncedSearch] = useDebounce(search, 1000);
   const [tableElement, setTableElement] = useState({});
-
+  const ref = useRef(null);
   const { data: product, isLoading } = useFetchData(
     "products",
     skip,
@@ -34,7 +35,7 @@ const Products = () => {
     order
   );
   const { mutate: createProduct } = useCreateData("products");
-  
+
   const totalPages = Math.ceil((product?.total || 0) / LIMIT);
 
   const handleOpen = (element) => {
@@ -46,7 +47,11 @@ const Products = () => {
     setOpen(!open);
   };
   const onSubmit = (data) => {
-    createProduct(data);
+    const parsetData = {  
+      ...data,
+      id: data.id,
+    };
+    createProduct(parsetData);
     handleOpen();
   };
   const pageProps = {
@@ -55,7 +60,17 @@ const Products = () => {
     totalPages,
     limit: LIMIT,
   };
-
+  const handleClickOutside = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      setSearch("");
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   const classBtn = "min-w-fit bg-white text-blue-gray-600 font-bold shadow-sm";
 
   return (
@@ -65,13 +80,20 @@ const Products = () => {
           <Button className={classBtn} onClick={() => handleOpen({})}>
             Create Product
           </Button>
-          <Input
-            value={search}
-            label="Search"
-            type="text"
-            onChange={(e) => setSearch(e.target.value)}
-            className="bg-white"
-          />
+          <div className="relative">
+            <Input
+              value={search}
+              label="Search"
+              type="text"
+              onChange={(e) => setSearch(e.target.value)}
+              className="bg-white"
+            />
+            {search && (
+              <span className="cursor-pointer" onClick={(e) => setSearch("")}>
+                <XMarkIcon className="absolute top-3 right-3 h-5 w-5 text-gray-400" />
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex gap-10">
           <Select

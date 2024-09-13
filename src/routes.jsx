@@ -5,7 +5,7 @@ import Products from "./pages/public/Products";
 import Cart from "./pages/public/Cart";
 import Recipes from "./pages/public/Recipes";
 import Users from "./pages/public/Users";
-import Posts from "./pages/public/Posts";
+import Posts from "./pages/public/posts/Posts";
 import Comments from "./pages/public/Comments";
 import {
   CartIcon,

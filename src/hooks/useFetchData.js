@@ -3,13 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import request from "@/services";
 import * as API from "@/constants/api";
 
-const fetchData = async ({ key, skip, searchQuery, sortBy, order }) => {
+const fetchData = async ({ key, skip, searchQuery, sortBy, order, limit }) => {
   let url = `${API.DOMAIN}/${key}`;
 
   if (searchQuery) {
     url = `${API.DOMAIN}/${key}/search?q=${searchQuery}`;
   } else {
-    url += `?limit=${API.LIMIT}&skip=${skip || 0}`;
+    url += `?limit=${limit || API.LIMIT}&skip=${skip || 0}`; 
   }
 
   if (sortBy && order) {
@@ -20,15 +20,15 @@ const fetchData = async ({ key, skip, searchQuery, sortBy, order }) => {
   return response.data;
 };
 
-const useData = (key, skip, searchQuery, sortBy, order) => {
+const useData = (key, skip, searchQuery, sortBy, order, limit) => {
   return useQuery({
-    queryKey: [key, skip, searchQuery, sortBy, order],
-    queryFn: () => fetchData({ key, skip, searchQuery, sortBy, order }),
+    queryKey: [key, skip, searchQuery, sortBy, order, limit],
+    queryFn: () => fetchData({ key, skip, searchQuery, sortBy, order, limit }),
     onError: (error) => {
       toast.error("Error fetching data", error.message);
     },
   });
 };
 
-export const useFetchData = (key, skip, searchQuery, sortBy, order) =>
-  useData(key, skip, searchQuery, sortBy, order);
+export const useFetchData = (key, skip, searchQuery, sortBy, order, limit) =>
+  useData(key, skip, searchQuery, sortBy, order, limit);

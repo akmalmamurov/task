@@ -4,6 +4,7 @@ import UserTable from "@/components/table/UserTable";
 import { LIMIT } from "@/constants/api";
 import { userHeader } from "@/data";
 import { useCreateData, useFetchData } from "@/hooks";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import {
   Button,
   Card,
@@ -14,7 +15,7 @@ import {
   Spinner,
   Typography,
 } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Users = () => {
   const [skip, setSkip] = useState(0);
@@ -23,6 +24,7 @@ const Users = () => {
   const [order, setOrder] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [tableElement, setTableElement] = useState({});
+  const ref = useRef(null);
   const { data: user, isLoading } = useFetchData(
     "users",
     skip,
@@ -50,7 +52,17 @@ const Users = () => {
     createUser(formattedData);
     handleOpen();
   };
-
+  const handleClickOutside = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      setSearch("");
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   console.log(user);
   const pageProps = {
     skip,
@@ -64,15 +76,22 @@ const Users = () => {
       <div className="flex mb-4 justify-between">
         <div className="flex gap-10">
           <Button className={classBtn} onClick={() => handleOpen({})}>
-            Create Product
+            Create User
           </Button>
-          <Input
-            value={search}
-            label="Search"
-            type="text"
-            onChange={(e) => setSearch(e.target.value)}
-            className="bg-white"
-          />
+          <div className="relative" ref={ref}>
+            <Input
+              value={search}
+              label="Search"
+              type="text"
+              onChange={(e) => setSearch(e.target.value)}
+              className="bg-white"
+            />
+            {search && (
+              <span className="cursor-pointer" onClick={(e) => setSearch("")}>
+                <XMarkIcon className="absolute top-3 right-3 h-5 w-5 text-gray-400" />
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex gap-10">
           <Select

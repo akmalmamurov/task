@@ -2,6 +2,7 @@ import RecipesCard from "@/components/card/RecipesCard";
 import Pagination from "@/components/pagination/Pagination";
 import { LIMIT } from "@/constants/api";
 import { useFetchData } from "@/hooks";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import {
   Button,
   Card,
@@ -12,14 +13,14 @@ import {
   Spinner,
   Typography,
 } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Recipes = () => {
   const [skip, setSkip] = useState(0);
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [order, setOrder] = useState("");
-
+  const ref = useRef(null);
   console.log(search);
   const { data: recipe, isLoading } = useFetchData(
     "recipes",
@@ -28,7 +29,17 @@ const Recipes = () => {
     sortBy,
     order
   );
-  console.log(recipe);
+  const handleClickOutside = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      setSearch("");
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   const pageProps = {
     skip,
     setSkip,
@@ -39,7 +50,7 @@ const Recipes = () => {
   return (
     <div className="my-6">
       <div className="flex mb-4 justify-between">
-        <div className="flex gap-10 w-[40%]">
+        <div className="flex gap-10 w-[40%] relative">
           <Input
             value={search}
             label="Search Recipe"
@@ -47,6 +58,11 @@ const Recipes = () => {
             onChange={(e) => setSearch(e.target.value)}
             className="bg-white"
           />
+          {search && (
+            <span className="cursor-pointer" onClick={(e) => setSearch("")}>
+              <XMarkIcon className="absolute top-3 right-14 h-5 w-5 text-gray-400" />
+            </span>
+          )}
         </div>
         <div className="flex gap-10">
           <Select
