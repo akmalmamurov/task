@@ -37,7 +37,7 @@ const UserModal = (props) => {
       <DialogHeader>{Object.keys(element).length === 0 ? "Add User" : "Update User"}</DialogHeader>
       <DialogBody>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-10">
             {Object.entries(userHeader).map(([key, item]) => {
               // Handle rendering address fields separately
               if (key === "address") return null; 

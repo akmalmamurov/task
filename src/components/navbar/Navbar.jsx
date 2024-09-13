@@ -31,9 +31,9 @@ export function DashboardNavbar() {
   return (
     <Navbar
       color={"white"}
-      className="bg-white rounded-xl transition-all top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5"
-      fullWidth
+      className="bg-white rounded-xl transition-all top-4 z-40 py-3 shadow-md xl:translate-x-0 translate-x-32 shadow-blue-gray-500/5 xl:w-full w-[84%]"
       blurred={true}
+      fullWidth
     >
       <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
         <div className="capitalize">

@@ -47,11 +47,11 @@ const Products = () => {
     setOpen(!open);
   };
   const onSubmit = (data) => {
-    const parsetData = {  
+    const parsedData = {
       ...data,
-      id: data.id,
+      id: data.id.toString(),
     };
-    createProduct(parsetData);
+    createProduct(parsedData);
     handleOpen();
   };
   const pageProps = {
@@ -75,8 +75,8 @@ const Products = () => {
 
   return (
     <div className="my-6">
-      <div className="flex mb-4 justify-between">
-        <div className="flex gap-10">
+      <div className="flex mb-4 justify-between flex-wrap">
+        <div className="flex gap-10 xl:mb-0 mb-3 flex-wrap">
           <Button className={classBtn} onClick={() => handleOpen({})}>
             Create Product
           </Button>
@@ -95,7 +95,7 @@ const Products = () => {
             )}
           </div>
         </div>
-        <div className="flex gap-10">
+        <div className="flex gap-10 ">
           <Select
             label="Sort By"
             value={sortBy}
@@ -138,7 +138,7 @@ const Products = () => {
           ) : (
             <>
               {product?.products?.length > 0 ? (
-                <div className="grid grid-cols-4 gap-8">
+                <div className="grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-4 gap-8">
                   {product?.products.map((el, index) => (
                     <ProductCard key={index} {...el} handleOpen={handleOpen} />
                   ))}

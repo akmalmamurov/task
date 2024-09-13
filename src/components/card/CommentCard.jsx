@@ -28,7 +28,7 @@ const CommentCard = (props) => {
           </Typography>
         </div>
         <Typography
-          variant="body2"
+          variant="small"
           color="gray"
           className="mb-2 text-blue-gray-500"
         >

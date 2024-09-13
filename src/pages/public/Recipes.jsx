@@ -49,8 +49,8 @@ const Recipes = () => {
   const classBtn = "min-w-fit bg-white text-blue-gray-600 font-bold shadow-sm";
   return (
     <div className="my-6">
-      <div className="flex mb-4 justify-between">
-        <div className="flex gap-10 w-[40%] relative">
+      <div className="flex mb-4 justify-between flex-wrap">
+        <div className="flex gap-10 w-[40%] relative xl:mb-0 mb-3">
           <Input
             value={search}
             label="Search Recipe"
@@ -107,7 +107,7 @@ const Recipes = () => {
           ) : (
             <>
               {recipe?.recipes?.length > 0 ? (
-                <div className="grid grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
                   {recipe?.recipes.map((el, index) => (
                     <RecipesCard key={index} {...el} />
                   ))}

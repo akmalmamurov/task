@@ -9,7 +9,7 @@ const getCommentPost = async (id) => {
 
 const useGetCommentPost = (id) => {
   return useQuery({
-    queryKey: ["post", id],
+    queryKey: ["comments", id],
     queryFn: () => getCommentPost(id),
   });
 };

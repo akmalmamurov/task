@@ -70,7 +70,7 @@ export function SignIn() {
 
   return (
     <section className="flex gap-4 justify-center items-center h-screen">
-      <div className="w-full lg:w-1/4 py-12 bg-white border-2 shadow-xl">
+      <div className="w-full sm:w-[50%]  py-12 bg-white border-2 shadow-xl">
         <div className="text-center">
           <Typography variant="h4" className="font-bold mb-4">
             Login to your account

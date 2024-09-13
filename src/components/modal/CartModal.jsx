@@ -9,7 +9,7 @@ const CartModal = ({ isOpen, onClose, products }) => {
         <h2 className="text-lg font-bold mb-4">Products</h2>
         <div>
           {products.map((product, index) => (
-            <div className="flex justify-between items-center" key={index}>
+            <div className="flex justify-between items-center flex-wrap" key={index}>
               <div className="w-[20%]">
                 <img src={product.thumbnail} alt="" className="w-10 h-10" />
               </div>

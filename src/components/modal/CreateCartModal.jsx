@@ -57,7 +57,7 @@ const CreateCartModal = ({ isOpen, handleOpen, onSubmit }) => {
               )}
             </div>
             {control._defaultValues.products.map((product, index) => (
-              <div key={index} className="grid grid-cols-3 gap-4 items-center mb-4">
+              <div key={index} className="grid lg:grid-cols-2 grid-cols-1 xl:grid-cols-3 gap-4 items-center mb-4">
                 <Controller
                   name={`products[${index}].name`}
                   control={control}

@@ -11,7 +11,8 @@ export function Sidenav({ routes }) {
         scrollbarWidth: "thin",
         scrollbarColor: "gray transparent",
       }}
-      className="overflow-y-auto fixed inset-0 z-50 my-4 ml-4 text h-[calc(100vh-32px)] w-[22rem] rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100"
+      className="overflow-y-auto fixed inset-0 z-50 my-4 ml-4 text h-[calc(100vh-32px)] w-[10rem] xl:w-[22rem] rounded-xl 
+      transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100"
     >
       <div className="relative">
         <Link to="/dashboard" className="py-6 px-8 text-center">

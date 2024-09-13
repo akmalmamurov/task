@@ -73,8 +73,8 @@ const Users = () => {
   const classBtn = "min-w-fit bg-white text-blue-gray-600 font-bold shadow-sm";
   return (
     <div className="my-6">
-      <div className="flex mb-4 justify-between">
-        <div className="flex gap-10">
+      <div className="flex mb-4 justify-between flex-wrap">
+        <div className="flex gap-10 xl:mb-0 mb-3">
           <Button className={classBtn} onClick={() => handleOpen({})}>
             Create User
           </Button>
@@ -124,13 +124,13 @@ const Users = () => {
         </div>
       </div>
 
-      <Card className="my-6 bg-transparent">
+      <Card className="my-6 bg-transparent ">
         <CardBody
           className="px-0 pt-0 pb-2 overflow-auto"
           style={{ scrollbarWidth: "thin", scrollbarColor: "gray transparent" }}
         >
-          <table className="w-full min-w-[640px] table-auto">
-            <thead className="bg-blue-gray-900 text-white">
+          <table className="w-full min-w-[640px] table-auto overflow-x-auto">
+            <thead className="bg-blue-gray-900 text-white ">
               <tr>
                 {Object.values(userHeader).map((el, index) => (
                   <th

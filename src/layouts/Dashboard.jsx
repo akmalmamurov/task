@@ -28,25 +28,27 @@ export function Dashboard() {
           <Cog6ToothIcon className="h-5 w-5" />
         </IconButton>
 
-        <Routes>
-          {routes.map(({ layout, pages }) =>
-            layout === "dashboard"
-              ? pages.map(({ path, element }, index) => (
-                  <React.Fragment key={path || index}>
-                    <Route path={path} element={element} />
-                  </React.Fragment>
-                ))
-              : null
-          )}
-          <Route path="products/:id" element={<ProductDetails />} />
-          <Route path="recipes/:id" element={<RecipesDetails />} />
-          <Route path="recipes/meal-type/:id" element={<RecipMeal />} />
-          <Route path="posts/:id" element={<PostDetails />} />
-          <Route path="posts/:id/comments" element={<PostComments />} />
-          <Route path="comments/:id" element={<CommentDetails />} />
-          <Route path="comments/post/:id" element={<CommentPost />} />
-          <Route path="*" element={<Navigate to="home" replace />} />
-        </Routes>
+        <div className="xl:ml-0 ml-32">
+          <Routes>
+            {routes.map(({ layout, pages }) =>
+              layout === "dashboard"
+                ? pages.map(({ path, element }, index) => (
+                    <React.Fragment key={path || index}>
+                      <Route path={path} element={element} />
+                    </React.Fragment>
+                  ))
+                : null
+            )}
+            <Route path="products/:id" element={<ProductDetails />} />
+            <Route path="recipes/:id" element={<RecipesDetails />} />
+            <Route path="recipes/meal-type/:id" element={<RecipMeal />} />
+            <Route path="posts/:id" element={<PostDetails />} />
+            <Route path="posts/:id/comments" element={<PostComments />} />
+            <Route path="comments/:id" element={<CommentDetails />} />
+            <Route path="comments/post/:id" element={<CommentPost />} />
+            <Route path="*" element={<Navigate to="home" replace />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

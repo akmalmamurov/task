@@ -101,8 +101,8 @@ const Posts = () => {
 
   return (
     <div className="my-6">
-      <div className="flex mb-4 justify-between">
-        <div className="flex gap-10">
+      <div className="flex mb-4 justify-between flex-wrap">
+        <div className="flex gap-10 xl:mb-0 mb-3">
           <Button className={classBtn} onClick={() => handleOpen({})}>
             Create Posts
           </Button>
@@ -156,7 +156,7 @@ const Posts = () => {
           className="px-0 pt-0 pb-2 overflow-auto"
           style={{ scrollbarWidth: "thin", scrollbarColor: "gray transparent" }}
         >
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
             {post?.posts.length > 0 ? (
               post?.posts.map((post) => (
                 <div
