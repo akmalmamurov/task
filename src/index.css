@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@layer components {
+  .label {
+    @apply min-w-fit mb-2;
+  }
+}

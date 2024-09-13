@@ -1,10 +1,10 @@
-import { Link, useParams } from "react-router-dom"; // Import useParams from 'react-router-dom'
-import useFetchDataById from "@/hooks/useFetchDataById"; // Import custom hook
+import { Link, useParams } from "react-router-dom"; 
+import useFetchDataById from "@/hooks/useFetchDataById"; 
 import { Button, Card, CardBody, Chip } from "@material-tailwind/react";
 
 const PostDetails = () => {
-  const { id } = useParams(); // Get the ID from the URL parameters
-  const { data: post } = useFetchDataById("posts", id); // Fetch data for the specific post by ID
+  const { id } = useParams(); 
+  const { data: post } = useFetchDataById("posts", id); 
 
   return (
     <div className="my-6">

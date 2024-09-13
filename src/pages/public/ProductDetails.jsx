@@ -8,6 +8,7 @@ import {
   Accordion,
   AccordionHeader,
   AccordionBody,
+  Spinner,
 } from "@material-tailwind/react";
 import { Link, useParams } from "react-router-dom";
 import RatingStars from "@/components/rating/RatingStars";
@@ -26,7 +27,11 @@ const ProductDetails = () => {
   const [open, setOpen] = useState(false);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-[70vh]  flex justify-center items-center">
+        <Spinner className="h-12 w-12 text-blue-gray-500" />
+      </div>
+    );
   }
 
   const handleToggleComments = () => {
@@ -67,7 +72,6 @@ const ProductDetails = () => {
           />
         </CardHeader>
         <CardBody className="p-6 w-3/5">
-          {/* Product Details */}
           <div className="flex justify-between items-center mb-4">
             <Typography
               variant="h4"
@@ -79,7 +83,6 @@ const ProductDetails = () => {
             <RatingStars rating={product.rating} />
           </div>
 
-          {/* Brand and Price */}
           <div className="flex justify-between items-start mb-4">
             <Typography
               variant="small"
@@ -97,7 +100,6 @@ const ProductDetails = () => {
             </Typography>
           </div>
 
-          {/* Description */}
           <Typography
             variant="small"
             color="gray"
@@ -106,9 +108,7 @@ const ProductDetails = () => {
             {product.description}
           </Typography>
 
-          {/* Dimensions */}
           <div className="flex gap-10 mb-8">
-            {/* Dimensions List */}
             {["Depth", "Width", "Height"].map((dim, index) => (
               <div className="flex flex-col items-center" key={index}>
                 <Typography
@@ -127,7 +127,6 @@ const ProductDetails = () => {
             ))}
           </div>
 
-          {/* QR and Bar Codes */}
           <div className="flex justify-between items-start mt-auto mb-4">
             <div>
               <Typography variant="small" color="blue-gray" className="mb-2">
@@ -158,7 +157,6 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          {/* QR Code */}
           <div className="flex justify-between items-start border-b">
             <div>
               <Typography
@@ -176,8 +174,11 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <Accordion open={open} >
-            <AccordionHeader onClick={handleToggleComments} className="border-none">
+          <Accordion open={open}>
+            <AccordionHeader
+              onClick={handleToggleComments}
+              className="border-none"
+            >
               <div className="flex items-center justify-between gap-8 cursor-pointer relative w-[50%]">
                 <div className="">
                   {product.reviews.map((_, index) => (

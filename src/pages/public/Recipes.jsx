@@ -123,7 +123,6 @@ const Recipes = () => {
           )}
         </CardBody>
 
-        {/* Pagination */}
         {recipe?.recipes?.length > 0 && (
           <div className="mt-4">
             <Pagination {...pageProps} />

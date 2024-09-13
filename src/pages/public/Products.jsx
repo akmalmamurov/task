@@ -154,7 +154,6 @@ const Products = () => {
           )}
         </CardBody>
 
-        {/* Pagination */}
         {product?.products?.length > 0 && (
           <div className="mt-4">
             <Pagination {...pageProps} />

@@ -4,3 +4,4 @@ export const REFRESH_TOKEN = `${DOMAIN}/auth/refresh`;
 export const LIMIT = 20;
 export const RECIPE_MEAL = `${DOMAIN}/recipes/meal-type`;
 export const POST = `${DOMAIN}/posts`
+export const COMMENT = `${DOMAIN}/comments/post`

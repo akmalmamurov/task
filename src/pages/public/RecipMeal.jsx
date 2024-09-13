@@ -1,4 +1,3 @@
-import RecipesCard from "@/components/card/RecipesCard";
 import RatingStars from "@/components/rating/RatingStars";
 import useGetMealData from "@/hooks/useGetMealData";
 import {

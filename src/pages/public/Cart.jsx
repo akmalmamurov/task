@@ -107,7 +107,6 @@ const Cart = () => {
         ))}
       </div>
 
-      {/* Modal for products */}
       <CartModal
         isOpen={isModalOpen}
         onClose={closeModal}
