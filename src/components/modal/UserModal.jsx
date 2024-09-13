@@ -18,7 +18,6 @@ const UserModal = (props) => {
     formState: { errors },
   } = useForm();
 
-  // Update reset to handle nested address properties correctly
   useEffect(() => {
     if (element && element.address) {
       reset({
@@ -39,7 +38,6 @@ const UserModal = (props) => {
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-10">
             {Object.entries(userHeader).map(([key, item]) => {
-              // Handle rendering address fields separately
               if (key === "address") return null; 
 
               return !item.disabled && (
@@ -67,7 +65,6 @@ const UserModal = (props) => {
                 </div>
               );
             })}
-            {/* Separate fields for city and address */}
             <div className="flex flex-col">
               <label htmlFor="city" className="label text-blue-gray-600">
                 City:
