@@ -1,6 +1,7 @@
 import { useDeleteData } from "@/hooks/useDeleteData";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const UserTable = ({ element, handleOpen }) => {
   const className = ` py-3 px-4`;
@@ -12,9 +13,14 @@ const UserTable = ({ element, handleOpen }) => {
     <>
       <tr className="bg-white text-black overflow-x-auto">
         <td className={className}>
-          <Typography variant="small" className="text-xs font-medium">
-            {element.username}
-          </Typography>
+          <Link to={`/dashboard/users/${element.id}`}>
+            <Typography
+              variant="small"
+              className="text-xs font-medium text-blue-600 underline"
+            >
+              {element.username}
+            </Typography>
+          </Link>
         </td>
         <td className={className}>
           <Typography variant="small" className="text-xs font-medium">

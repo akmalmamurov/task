@@ -6,3 +6,4 @@ export const RECIPE_MEAL = `${DOMAIN}/recipes/meal-type`;
 export const POST = `${DOMAIN}/posts`;
 export const COMMENT = `${DOMAIN}/comments/post`;
 export const RANDOM_TODO = `${DOMAIN}/todos/random`;
+export const QUOTE_RANDOM = `${DOMAIN}/quotes/random`;

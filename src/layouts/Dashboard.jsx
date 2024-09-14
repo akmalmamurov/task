@@ -12,6 +12,8 @@ import PostDetails from "@/pages/public/posts/PostDetails";
 import PostComments from "@/pages/public/posts/PostComments";
 import CommentDetails from "@/pages/public/comment/CommentDetails";
 import CommentPost from "@/pages/public/comment/CommentPost";
+import QuotesDetails from "@/pages/public/QuotesDetails";
+import UserDetails from "@/pages/public/UserDetails";
 
 export function Dashboard() {
   return (
@@ -46,6 +48,8 @@ export function Dashboard() {
             <Route path="posts/:id/comments" element={<PostComments />} />
             <Route path="comments/:id" element={<CommentDetails />} />
             <Route path="comments/post/:id" element={<CommentPost />} />
+            <Route path="quotes/:id" element={<QuotesDetails />} />
+            <Route path="users/:id" element={<UserDetails />} />
             <Route path="*" element={<Navigate to="home" replace />} />
           </Routes>
         </div>
