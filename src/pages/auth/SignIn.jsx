@@ -42,6 +42,9 @@ export function SignIn() {
           token: response.data.token,
           type: "Bearer",
         },
+        userState: {
+          username: response.data.username,
+        },
       });
       localStorage.setItem("accessToken", response.data.token);
       localStorage.setItem("refreshToken", response.data.refreshToken);

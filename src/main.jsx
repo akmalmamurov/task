@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
-import "./index.css";
+import "../public/css/tailwind.css";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "react-auth-kit/AuthProvider";
 import createStore from "react-auth-kit/createStore";

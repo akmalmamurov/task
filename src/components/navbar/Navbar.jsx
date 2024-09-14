@@ -25,6 +25,7 @@ import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 export function DashboardNavbar() {
   const { pathname } = useLocation();
   const auth = useAuthUser();
+  console.log(auth);
 
   const [layout, page = ""] = pathname.split("/").filter((el) => el !== "");
 
