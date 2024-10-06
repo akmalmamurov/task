@@ -39,18 +39,18 @@ export function SignIn() {
       console.log(response);
       signInHook({
         auth: {
-          token: response.data.token,
+          token: response.data.accessToken,
           type: "Bearer",
         },
         userState: {
           username: response.data.username,
         },
       });
-      localStorage.setItem("accessToken", response.data.token);
+      localStorage.setItem("accessToken", response.data.accessToken);
       localStorage.setItem("refreshToken", response.data.refreshToken);
       loginSuccess(response.data.username);
-      navigate("/dashboard");
       toast.success("Successfully signed in");
+      navigate("/dashboard");
     } catch (error) {
       if (!error.response) {
         toast.error("The server is not responding. Please try again later.", {

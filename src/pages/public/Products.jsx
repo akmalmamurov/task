@@ -47,11 +47,11 @@ const Products = () => {
     setOpen(!open);
   };
   const onSubmit = (data) => {
-    const parsedData = {
+    const formattedData = {
       ...data,
-      id: data.id.toString(),
+      id: data.id ? data.id.toString() : undefined,
     };
-    createProduct(parsedData);
+    createProduct(formattedData);
     handleOpen();
   };
   const pageProps = {
